@@ -1,16 +1,11 @@
 0 silly argv {
-0 silly argv   _: [ 'add' ],
-0 silly argv   globs: [ 'utils/log' ],
+0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '5.1.4',
 0 silly argv   '$0': 'E:\\node\\node_global\\node_modules\\lerna\\cli.js',
-0 silly argv   pkg: 'npmlog'
+0 silly argv   name: 'utils/get-npm-info'
 0 silly argv }
 1 notice cli v5.1.4
 2 verbose rootPath D:\project\cli\handy-cli
-3 error FetchError: request to https://registry.npmjs.org/npmlog failed, reason: connect ETIMEDOUT 104.16.21.35:443
-3 error     at ClientRequest.<anonymous> (E:\node\node_global\node_modules\lerna\node_modules\npm-registry-fetch\node_modules\minipass-fetch\lib\index.js:130:14)
-3 error     at ClientRequest.emit (events.js:315:20)
-3 error     at TLSSocket.socketErrorListener (_http_client.js:469:9)
-3 error     at TLSSocket.emit (events.js:327:22)
-3 error     at emitErrorNT (internal/streams/destroy.js:106:8)
-3 error     at emitErrorCloseNT (internal/streams/destroy.js:74:3)
+3 error TypeError: Cannot read property 'toLocaleLowerCase' of undefined
+3 error     at camelCase (E:\node\node_global\node_modules\lerna\node_modules\@lerna\create\node_modules\yargs-parser\build\index.cjs:8:15)
+3 error     at CreateCommand.initialize (E:\node\node_global\node_modules\lerna\node_modules\@lerna\create\index.js:63:22)

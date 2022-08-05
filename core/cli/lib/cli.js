@@ -100,7 +100,11 @@ async function checkGlobalUpdate(){
   const npmName='com-lib-test';//pkg.name;
   //2.调用npm API，获取所有版本号
   const {getNpmSemverVersion}= require("@handy-cli/get-npm-info")
-  const data=await getNpmSemverVersion(npmName,currentVersion)
+  const lastVersion=await getNpmSemverVersion(npmName,currentVersion)
+  if(lastVersion&&semver.gt(lastVersion,currentVersion)){
+    log.warn(colors.yellow(`请手动更新${npmName},当前版本：${currentVersion},最新版本：${lastVersion}
+    更新命令：npm install -g ${npmName}`))
+  }
   //3、提前所有版本号，比对哪些版本号大于当前版本号
   
   //4、获取最新的版本号，提示用户更新到最新版本

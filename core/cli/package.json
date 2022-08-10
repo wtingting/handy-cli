@@ -10,10 +10,12 @@
     "handy-cli": "bin/index.js"
   },
   "dependencies": {
+    "@handy-cli/get-npm-info": "file:../../utils/get-npm-info",
     "@handy-cli/log": "file:../../utils/log",
     "@handy-cli/utils": "file:../../utils/utils",
-    "@handy-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@handy-cli/init": "file:../../commands/init",
     "colors": "^1.4.0",
+    "commander": "^9.4.0",
     "dotenv": "^16.0.1",
     "import-local": "^3.1.0",
     "minimist": "^1.2.6",

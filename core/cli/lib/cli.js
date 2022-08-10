@@ -10,17 +10,21 @@ const pkg = require("../package.json");
 const log = require("@handy-cli/log");
 const constant = require("./const");
 const path = require("path");
+const program=require('commander')
+const init=require('@handy-cli/init')
 
 const {homedir}= require('os');
 async function cli() {
   try {
-    checkPigVersion();
+    checkPkgVersion();
     checkNodeVersion();
     checkRoot();
     checkUserHome();
-    chenkInputArgs();
+    // chenkInputArgs();
     checkEnv();
     await checkGlobalUpdate()
+    registerCommand()
+
   } catch (e) {
     log.error(e);
   }
@@ -39,7 +43,7 @@ function checkNodeVersion() {
   }
 }
 //监测版本号发出通知
-function checkPigVersion() {
+function checkPkgVersion() {
   log.notice("cli", pkg.version);
 }
 //检查root启动，自动降级root权限，（对ios有效）
@@ -66,7 +70,7 @@ function chenkInputArgs() {
   log.level = process.env.LOG_LEVEL;
   //方法二
   // log.level=args.debug?"verbose":"info"
-    // log.verbose('debug','测试debug模式')
+    log.verbose('debug','测试debug模式')
 
 }
 let config;
@@ -109,4 +113,36 @@ async function checkGlobalUpdate(){
   
   //4、获取最新的版本号，提示用户更新到最新版本
   
+}
+
+function registerCommand(){
+  program
+  .name(Object.keys(pkg.bin)[0])
+  .usage('<command> [options]')
+  .version(pkg.version)
+  .option('-d,--debug','是否开启调试模式',false);
+
+  //注册命令
+  program.command('init [prjectName]')
+  .option('-f,--force','是否强制初始化项目')
+  .action(init)
+
+  //开启debug模式
+  program.on("option:debug",function(opts){
+    let options=program.opts()
+    process.env.LOG_LEVEL='verbose';
+    log.level=process.env.LOG_LEVEL;
+    log.verbose('debug','测试debug模式')
+  })
+
+  //对未知命令监听
+  program.on('command:*',function(obj){
+    program.outputHelp()
+    console.log(obj)
+    const availableCommands=program.commands.map(cmd=>cmd.name())
+    console.log(colors.red('未知命令：'+obj[0]))
+    console.log(colors.red('可用命令',availableCommands.join(',')))
+  })
+  
+  program.parse(process.argv)
 }

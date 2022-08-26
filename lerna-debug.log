@@ -2,10 +2,18 @@
 0 silly argv   _: [ 'create' ],
 0 silly argv   lernaVersion: '5.1.4',
 0 silly argv   '$0': 'E:\\node\\node_global\\node_modules\\lerna\\cli.js',
-0 silly argv   name: 'utils/get-npm-info'
+0 silly argv   name: '@handy-cli/format-path',
+0 silly argv   loc: 'utils'
 0 silly argv }
 1 notice cli v5.1.4
 2 verbose rootPath D:\project\cli\handy-cli
-3 error TypeError: Cannot read property 'toLocaleLowerCase' of undefined
-3 error     at camelCase (E:\node\node_global\node_modules\lerna\node_modules\@lerna\create\node_modules\yargs-parser\build\index.cjs:8:15)
-3 error     at CreateCommand.initialize (E:\node\node_global\node_modules\lerna\node_modules\@lerna\create\index.js:63:22)
+3 error Error: canceled
+3 error     at Interface.<anonymous> (E:\node\node_global\node_modules\lerna\node_modules\read\lib\read.js:66:13)
+3 error     at Interface.emit (events.js:315:20)
+3 error     at Interface._ttyWrite (readline.js:875:16)
+3 error     at ReadStream.onkeypress (readline.js:213:10)
+3 error     at ReadStream.emit (events.js:315:20)
+3 error     at emitKeys (internal/readline/utils.js:345:14)
+3 error     at emitKeys.next (<anonymous>)
+3 error     at ReadStream.onData (readline.js:1144:36)
+3 error     at ReadStream.emit (events.js:315:20)

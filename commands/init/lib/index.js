@@ -2,6 +2,6 @@
 
 module.exports = init;
 
-function init (projectName,cmdObj){
-    console.log('init',projectName,cmdObj.force)
+function init (projectName,options,cmdObj){
+    console.log('init',projectName,process.env.CLI_TARGET_PATH)
  }

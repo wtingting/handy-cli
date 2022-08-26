@@ -1,5 +1,5 @@
 const LOWEST_NODE_VERSION="14.0.0"
-const DEFAULT_CLI_HOME='.handy-cli'
+const DEFAULT_CLI_HOME='.handy-cli-dev'
 module.exports={
   LOWEST_NODE_VERSION,
   DEFAULT_CLI_HOME

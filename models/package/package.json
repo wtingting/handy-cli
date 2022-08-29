@@ -30,6 +30,7 @@
     "@handy-cli/format-path": "file:../../utils/format-path",
     "@handy-cli/get-npm-info": "file:../../utils/get-npm-info",
     "@handy-cli/utils": "file:../../utils/utils",
+    "fs-extra": "^10.1.0",
     "npminstall": "^5.8.1",
     "path-exists": "^4.0.0",
     "pkg-dir": "^5.0.0"

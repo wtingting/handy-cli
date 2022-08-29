@@ -32,7 +32,7 @@ async function getNpmVersion(npmName, registry) {
 }
 function getSemverVersion(baseVersion, versions) {
     versions = versions.filter(version => semver.satisfies(version, `>${baseVersion}`))
-    .sort((a, b) => semver.gt(b, a)) //排序
+    .sort((a, b) => semver.gt(b, a)?1:-1) //排序
     return versions;
 }
 async function getNpmSemverVersion(npmName, baseVersion, registry) {
@@ -43,9 +43,18 @@ async function getNpmSemverVersion(npmName, baseVersion, registry) {
     }
     return null
 }
+//获取npm包中最新版本
+async function getNpmLatestVersion(npmName,registry){
+    const versions=await getNpmVersion(npmName,registry);
+    if(versions){
+        return versions.sort((a, b) => semver.gt(b, a)?1:-1)[0]        
+    }
+    return
+}
 module.exports = {
     getNpmInfo,
     getNpmVersion,
     getNpmSemverVersion,
-    getDefaultRegistry
+    getDefaultRegistry,
+    getNpmLatestVersion
 } 
